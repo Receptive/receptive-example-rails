@@ -4,7 +4,7 @@
       <div class="col-sm-10 col-sm-offset-1">
 	<div class="navbar-header">
 	  <a class="navbar-brand" href="#">
-	    Your Brand
+	    AlphaApp
 	  </a>
 	</div>
 	<div class="navbar-right">
@@ -31,6 +31,14 @@
       <pre>
 	<%= @signed_snippet %>
       </pre>
+
+      <div class="alert <%= 'alert-danger' if Rails.configuration.receptive_vendor_id=='CHANGEME' or Rails.configuration.receptive_secret_key=='CHANGEME' %>">
+
+	<p>Set your vendor ID and secret key in config/initializers/receptive.rb</p>
+	<p>Using this vendor ID from your config file:<strong><%= Rails.configuration.receptive_vendor_id %></strong></p>
+	<p>Using this secret key from your config file:<strong><%= truncate(Rails.configuration.receptive_secret_key, :length=>10) %></strong></p>
+
+      </div>
 
       <p>See app/controllers/home_controller.rb for example code generating and signing the snippet.</p>
 
