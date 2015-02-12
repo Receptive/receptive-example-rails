@@ -1,0 +1,30 @@
+<h1>Receptive Example for Rails</h1>
+
+<p>Your snippet looks like this:</p>
+
+<%= @signed_snippet %>
+
+<p>See app/controllers/home_controller.rb for example code generating and signing the snippet.</p>
+
+<p>Log in to Receptive as an end user by <a href="#" onclick="receptivePublicLib.loginAndRedirect()">clicking here</a>.</p>
+
+<script type="text/javascript">
+  var receptiveAppSettings = <%= raw(@signed_snippet) %>
+</script>
+<script type="text/javascript">
+  <!-- Receptive widget -->
+  (function() {
+  function async_load() {
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = 'https://receptive.io/js/widget/widget.js';
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+  }
+  if (window.attachEvent) {
+    window.attachEvent('onload', async_load);
+  } else {
+    window.addEventListener('load', async_load, false);
+  }})();
+</script>
