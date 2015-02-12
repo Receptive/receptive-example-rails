@@ -1,30 +1,68 @@
-<h1>Receptive Example for Rails</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+	<div class="navbar-header">
+	  <a class="navbar-brand" href="#">
+	    Your Brand
+	  </a>
+	</div>
+	<div class="navbar-right">
+	  <button type="button" class="btn btn-primary navbar-btn" onclick="receptivePublicLib.loginAndRedirect()">Suggest Features</button>
+	</div>
+      </div>
+    </div>
+  </div>
+</nav>
 
-<p>Your snippet looks like this:</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
 
-<%= @signed_snippet %>
+      <div class="jumbotron">
+	<h1>This is your SaaS app</h1>
 
-<p>See app/controllers/home_controller.rb for example code generating and signing the snippet.</p>
+      </div>
 
-<p>Log in to Receptive as an end user by <a href="#" onclick="receptivePublicLib.loginAndRedirect()">clicking here</a>.</p>
+      <h1>Receptive Example for Rails</h1>
 
-<script type="text/javascript">
-  var receptiveAppSettings = <%= raw(@signed_snippet) %>
-</script>
-<script type="text/javascript">
-  <!-- Receptive widget -->
-  (function() {
-  function async_load() {
-    var s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.async = true;
-    s.src = 'https://receptive.io/js/widget/widget.js';
-    var x = document.getElementsByTagName('script')[0];
-    x.parentNode.insertBefore(s, x);
-  }
-  if (window.attachEvent) {
-    window.attachEvent('onload', async_load);
-  } else {
-    window.addEventListener('load', async_load, false);
-  }})();
-</script>
+      <p>Your snippet looks like this:</p>
+
+      <pre>
+	<%= @signed_snippet %>
+      </pre>
+
+      <p>See app/controllers/home_controller.rb for example code generating and signing the snippet.</p>
+
+      <p>Need docs? <a href="https://receptive.io/blog/pages/how-to-integrate-widget.html">How to integrate Receptive</a>.</p>
+
+      <p>Let your customers log into Receptive from your app by adding a link or button with a click handler like this:</p>
+
+      <pre>
+	&lt;a href="#" onclick="receptivePublicLib.loginAndRedirect()"&gt;Suggest Features&lt;/a&gt;.
+      </pre>
+
+      <script type="text/javascript">
+	var receptiveAppSettings = <%= raw(@signed_snippet) %>
+      </script>
+      <script type="text/javascript">
+	<!-- Receptive widget -->
+	(function() {
+	function async_load() {
+	var s = document.createElement('script');
+	s.type = 'text/javascript';
+	s.async = true;
+	s.src = 'https://receptive.io/js/widget/widget.js';
+	var x = document.getElementsByTagName('script')[0];
+	x.parentNode.insertBefore(s, x);
+	}
+	if (window.attachEvent) {
+	window.attachEvent('onload', async_load);
+	} else {
+	window.addEventListener('load', async_load, false);
+	}})();
+      </script>
+
+    </div>
+  </div>
+</div>
