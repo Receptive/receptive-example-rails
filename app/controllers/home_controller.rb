@@ -17,18 +17,16 @@ class HomeController < ApplicationController
         "id" => "u123456"
       },
       "return_url" => "http://localhost:3001",
-    }    
+    }
+
     @signed_snippet = sign_snippet(unsigned_snippet)
   end
-  
+
   private
 
-
   def sign_snippet(unsigned)
-    concat_values = ([Rails.configuration.receptive_secret_key] + [unsigned["return_url"]] + [unsigned["timestamp"]] + unsigned["account"].values + unsigned["user"].values + unsigned["vendor"].values).sort.join(",")
-    signature = Digest::SHA256.new << concat_values
-    unsigned["signature"] = signature.to_s
-    unsigned.to_json
+    hmac_secret = Rails.configuration.receptive_secret_key
+    JWT.encode unsigned, hmac_secret, 'HS256'
   end
 
 end
