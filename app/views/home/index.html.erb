@@ -29,7 +29,9 @@
       <p>Your snippet looks like this:</p>
 
       <pre>
-	<%= @signed_snippet %>
+        var receptiveAppSettings = {
+          "jwt": "<%= @signed_snippet %>"
+        }
       </pre>
 
       <div class="alert <%= 'alert-danger' if Rails.configuration.receptive_vendor_id=='CHANGEME' or Rails.configuration.receptive_secret_key=='CHANGEME' %>">
@@ -51,7 +53,9 @@
       </pre>
 
       <script type="text/javascript">
-	var receptiveAppSettings = <%= raw(@signed_snippet) %>
+	      var receptiveAppSettings = {
+          "jwt": "<%= raw(@signed_snippet) %>"
+        }
       </script>
       <script type="text/javascript">
 	<!-- Receptive widget -->
