@@ -26,13 +26,15 @@
 
       <h1><a href="https://receptive.io">Receptive</a> Demo for Rails</h1>
 
-      <p>Your snippet looks like this:</p>
+			<p>Your unsigned snippet looks like this:</p>
 
-      <pre>
-        var receptiveAppSettings = {
+			<pre><%= JSON.pretty_generate(@unsigned_snippet) %></pre>
+
+      <p>Your signed snippet looks like this:</p>
+
+      <pre>var receptiveAppSettings = {
           "jwt": "<%= @signed_snippet %>"
-        }
-      </pre>
+      }</pre>
 
       <div class="alert <%= 'alert-danger' if Rails.configuration.receptive_vendor_id=='CHANGEME' or Rails.configuration.receptive_secret_key=='CHANGEME' %>">
 

@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    unsigned_snippet = {
+    @unsigned_snippet = {
       "timestamp" => DateTime.now.iso8601,
       "account" => {
         "id" => "a123456",
@@ -19,7 +19,7 @@ class HomeController < ApplicationController
       "return_url" => "http://localhost:3001",
     }
 
-    @signed_snippet = sign_snippet(unsigned_snippet)
+    @signed_snippet = sign_snippet(@unsigned_snippet)
   end
 
   private
